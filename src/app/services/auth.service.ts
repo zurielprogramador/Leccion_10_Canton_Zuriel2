@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 export class AuthService {
 
   private url = 'https://www.googleapis.com/identitytoolkit/v3/relyingparty';
-  private apikey = 'AIzaSyDNnSFX4FiKtVGpN_1kFiCQc3H7YQmlxs0';
+  private apikey = 'AIzaSyCZOnUmj_Huy2MtPEf080xeX5g62VveWbY';
 
   userToken: any;
 
