@@ -13,10 +13,12 @@ usuario: UsuarioModel;
 
   ngOnInit() {
   this.usuario= new UsuarioModel();
-
-  this.usuario.email= 'argenis.canton08@gmail.com';
   }
   onSubmit( form:NgForm ){
+
+
+    //if(form.invalid) {return;}
+
     console.log('Formulario enviado');
     console.log(this.usuario);
     console.log(form);
