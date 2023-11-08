@@ -8,9 +8,13 @@ import { UsuarioModel } from '../pages/models/usuario.model';
 export class AuthService {
 private url = 'https://identitytoolkit.googleapis.com/v1/accounts';
 private apikey = 'AIzaSyCZOnUmj_Huy2MtPEf080xeX5g62VveWbY'
+userToken:string;
   //https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=[API_KEY]
   // https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=[API_KEY]
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+
+    this.leerToken();
+  }
 
   logout(){
 
@@ -36,10 +40,30 @@ private apikey = 'AIzaSyCZOnUmj_Huy2MtPEf080xeX5g62VveWbY'
       password: usuario.password,
       returnSecureToken:true
     };
-    return this.http.post{
+    return this.http.post(
       `${ this.url }/signupNewUser?Key=${ this.apikey }`,
-      authData
+    ).pipe(
+      map(resp =>){
+console.log('Entro en el mapa del RXJS');
+this.guardarToken(resp[idToken]);
+  return resp;
+
+      })
+
     };
     }
+    private guardarToken( idToken: string){
+this.userToken=idToken;
+localStorage.setItem('token,idToken');
+    }
+    leerToken(){
+      if(localStorage.getItem('token')){
+this.userToken= localStorage.getItem('token');
+      }else{
+        this.userToken='';
+      }
+      return this.userToken;
+    }
   }
+
 
