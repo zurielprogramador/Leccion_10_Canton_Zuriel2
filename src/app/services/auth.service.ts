@@ -56,6 +56,14 @@ this.guardarToken(resp[idToken]);
 this.userToken=idToken;
 localStorage.setItem('token,idToken');
     }
+
+let hoy= newDate();
+hoy.setSeconds( 3600);
+localStorage.setItem('expira', hoy.getTime().toString());
+
+
+
+
     leerToken(){
       if(localStorage.getItem('token')){
 this.userToken= localStorage.getItem('token');
@@ -65,10 +73,18 @@ this.userToken= localStorage.getItem('token');
       return this.userToken;
 
     estaAutenticando():boolean{
-      return this.userToken.length>2;
-    }
-    }
-  }
+     if(this.userToken.length<2){
+      return false;
+     }
+const expira =number(localStorage.getItem('exopira)'));
+const expiraDate=new Date();
+expiraDate.setTime(expira);
 
+if(expiraDate>new Date()){
+  return true;
+}else{
+  return
+}
+}
 
 
