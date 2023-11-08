@@ -24,6 +24,7 @@ usuario: UsuarioModel | undefined;
     .subscribe( resp =>{
       console.log(resp);
     }, (err =>{
+
       console.log(err.error.error.message);
 
     });
