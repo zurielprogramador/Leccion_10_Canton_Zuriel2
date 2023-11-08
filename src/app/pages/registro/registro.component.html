@@ -1,4 +1,4 @@
-<div class="limiter">
+<div class="limiter animated fadeInRight">
         <div class="container-login100">
             <div class="wrap-login100 p-t-50 p-b-90">
 
@@ -18,7 +18,7 @@
 
                                type="email"
                                name="email"
-                               [[(ngModel)]="usuario.email"
+                               [(ngModel)]="usuario.email"
                                required
                                email
                                placeholder="Email">
@@ -35,7 +35,7 @@
                                required
                                minlength="2"
                                name="nombre"
-                               [[(ngModel)]="usuario.nombre"
+                               [(ngModel)]="usuario.nombre"
                                placeholder="Nombre y apellidos">
 
                         <span class="focus-input100"></span>
@@ -50,7 +50,7 @@
                                name="password"
                                minlength="6"
 
-                               [[(ngModel)]="usuario.password"
+                               [(ngModel)]="usuario.password"
                                placeholder="Password">
                         <span class="focus-input100"></span>
                     </div>
@@ -64,7 +64,7 @@
                         </div>
 
                         <div>
-                            <a routerLink="/registro" class="txt1">
+                            <a routerLink="/login" class="txt1">
                                 ¿Ya tienes cuenta? / Ingresar
                             </a>
                         </div>
