@@ -17,7 +17,7 @@ userToken:string;
   }
 
   logout(){
-
+localStorage.removeItem('token')
 
   }
   login(usuario:UsuarioModel){
@@ -63,7 +63,12 @@ this.userToken= localStorage.getItem('token');
         this.userToken='';
       }
       return this.userToken;
+
+    estaAutenticando():boolean{
+      return this.userToken.length>2;
+    }
     }
   }
+
 
 
