@@ -17,7 +17,10 @@ usuario: UsuarioModel | undefined;
   }
   onSubmit( form:NgForm ){
 
-
+if(this.recordarme){
+  localStorage.setItem('email',
+  this.usuario.email)
+}
     if(form.invalid) {return;}
 
     this.auth.nuevoUsuario( this.usuario)
@@ -26,6 +29,7 @@ usuario: UsuarioModel | undefined;
     }, (err =>{
 
       console.log(err.error.error.message);
+
 
     });
   }

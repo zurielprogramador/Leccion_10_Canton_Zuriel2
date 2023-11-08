@@ -10,6 +10,7 @@ import Swal from 'sweetalert2';
 export class LoginComponent implements OnInit {
 
   usuario: UsuarioModel = new UsuarioModel();
+  recordarme=false;
   constructor() { }
 
   ngOnInit() {
