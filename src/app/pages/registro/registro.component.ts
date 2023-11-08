@@ -16,8 +16,9 @@ usuario: UsuarioModel;
 
   this.usuario.email= 'argenis.canton08@gmail.com';
   }
-  onSubmit(){
+  onSubmit( form:NgForm ){
     console.log('Formulario enviado');
     console.log(this.usuario);
+    console.log(form);
   }
 }

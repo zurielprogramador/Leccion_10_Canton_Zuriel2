@@ -1,6 +1,6 @@
-export class UsuarioModel{
-  email:string;
-  password:string;
-  nombre:string
 
+export class UsuarioModel {
+  email: string;
+  password: string;
+  nombre: string;
 }
