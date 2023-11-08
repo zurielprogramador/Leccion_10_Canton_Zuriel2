@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "login7": {
+    "loginApp": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/login7",
+            "outputPath": "dist/login-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "login7:build:production"
+              "browserTarget": "loginApp:build:production"
             },
             "development": {
-              "browserTarget": "login7:build:development"
+              "browserTarget": "loginApp:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "login7:build"
+            "browserTarget": "loginApp:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "019c55bd-d204-4208-b362-3b0a9a77dd50"
+    "analytics": "a56a0ba1-e95c-4fd2-b1aa-adc18b4b61ee"
   }
 }

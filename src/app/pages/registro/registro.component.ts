@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioModel } from '../models/usuario.model';
+import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+
+import { UsuarioModel } from '../../models/usuario.model';
+import { AuthService } from '../../services/auth.service';
+
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-registro',
@@ -9,28 +14,48 @@ import { NgForm } from '@angular/forms';
 })
 export class RegistroComponent implements OnInit {
 
-usuario: UsuarioModel | undefined;
-  constructor( private auth: AuthService ) { }
+  usuario: UsuarioModel;
+  recordarme = false;
+
+  constructor( private auth: AuthService,
+               private router: Router ) { }
 
   ngOnInit() {
-  this.usuario= new UsuarioModel();
+    this.usuario = new UsuarioModel();
   }
-  onSubmit( form:NgForm ){
 
-if(this.recordarme){
-  localStorage.setItem('email',
-  this.usuario.email)
-}
-    if(form.invalid) {return;}
+  onSubmit( form: NgForm ) {
 
-    this.auth.nuevoUsuario( this.usuario)
-    .subscribe( resp =>{
-      console.log(resp);
-    }, (err =>{
+    if ( form.invalid ) { return; }
 
-      console.log(err.error.error.message);
-
-
+    Swal.fire({
+      allowOutsideClick: false,
+      icon: 'info',
+      text: 'Espere por favor...'
     });
+    Swal.showLoading();
+
+    this.auth.nuevoUsuario( this.usuario )
+      .subscribe( resp => {
+
+        console.log(resp);
+        Swal.close();
+
+        if ( this.recordarme ) {
+          localStorage.setItem('email', this.usuario.email);
+        }
+
+        this.router.navigateByUrl('/home');
+
+      }, (err) => {
+        console.log(err.error.error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error al autenticar',
+          text: err.error.error.message
+        });
+      });
   }
+
+
 }
