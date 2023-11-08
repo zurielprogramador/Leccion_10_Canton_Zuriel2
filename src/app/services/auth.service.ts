@@ -21,5 +21,15 @@ private apikey = 'AIzaSyCZOnUmj_Huy2MtPEf080xeX5g62VveWbY'
   }
   nuevoUsuario(usuario:UsuarioModel){
 
+    const anthData={
+      email:usuario.email,
+      password: usuario.password,
+      returnSecureToken:true
+    };
+    return this.http.post{
+      `${ this.url }/signupNewUser?Key=${ this.apikey }`,
+      authData
+    };
+    }
   }
-}
+

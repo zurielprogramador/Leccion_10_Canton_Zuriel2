@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class RegistroComponent implements OnInit {
 
 usuario: UsuarioModel | undefined;
-  constructor() { }
+  constructor( private auth: AuthService ) { }
 
   ngOnInit() {
   this.usuario= new UsuarioModel();
@@ -18,10 +18,14 @@ usuario: UsuarioModel | undefined;
   onSubmit( form:NgForm ){
 
 
-    //if(form.invalid) {return;}
+    if(form.invalid) {return;}
 
-    console.log('Formulario enviado');
-    console.log(this.usuario);
-    console.log(form);
+    this.auth.nuevoUsuario( this.usuario)
+    .subscribe( resp =>{
+      console.log(resp);
+    }, (err =>{
+      console.log(err.error.error.message);
+
+    });
   }
 }
